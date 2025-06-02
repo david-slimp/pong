@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock808 Pong Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 2px solid #fff;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="pongCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('pongCanvas');
+        const context = canvas.getContext('2d');
+
+        // Sound Effects using Web Audio API
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(frequency, type, duration) {
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.type = type;
+            oscillator.frequency.value = frequency;
+            oscillator.start();
+            gainNode.gain.setValueAtTime(1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            oscillator.stop(audioCtx.currentTime + duration);
+        }
+
+        // Score
+        let playerScore = 0;
+        let aiScore = 0;
+
+        // Controls
+        const keys = {
+            ArrowUp: false,
+            ArrowDown: false
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'ArrowUp' || e.code === 'ArrowDown') {
+                keys[e.code] = true;
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.code === 'ArrowUp' || e.code === 'ArrowDown') {
+                keys[e.code] = false;
+            }
+        });
+
+        // Paddles and Ball
+        const paddleWidth = 10;
+        const paddleHeight = 100;
+        const playerPaddle = { 
+            x: 30, 
+            y: canvas.height / 2 - paddleHeight / 2, 
+            width: paddleWidth, 
+            height: paddleHeight, 
+            dy: 7 
+        };
+        const aiPaddle = { 
+            x: canvas.width - 30 - paddleWidth, 
+            y: canvas.height / 2 - paddleHeight / 2, 
+            width: paddleWidth, 
+            height: paddleHeight, 
+            dy: 5 
+        };
+        const ball = { 
+            x: canvas.width / 2, 
+            y: canvas.height / 2, 
+            radius: 10, 
+            speed: 5, 
+            dx: 5, 
+            dy: 5 
+        };
+
+        // Draw Rect (Paddles and Borders)
+        function drawRect(x, y, width, height, color) {
+            context.fillStyle = color;
+            context.fillRect(x, y, width, height);
+        }
+
+        // Draw Circle (Ball)
+        function drawCircle(x, y, radius, color) {
+            context.fillStyle = color;
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI * 2, false);
+            context.closePath();
+            context.fill();
+        }
+
+        // Draw Net
+        function drawNet() {
+            context.strokeStyle = '#FFF';
+            context.setLineDash([5, 15]);
+            context.beginPath();
+            context.moveTo(canvas.width / 2, 0);
+            context.lineTo(canvas.width / 2, canvas.height);
+            context.stroke();
+            context.setLineDash([]);
+        }
+
+        // Draw Score
+        function drawScore() {
+            context.fillStyle = '#FFF';
+            context.font = '48px Arial';
+            context.fillText(playerScore, canvas.width / 4, 50);
+            context.fillText(aiScore, 3 * canvas.width / 4, 50);
+        }
+
+        // Reset Ball to Center
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.speed = 5;
+            // Randomize initial direction
+            let angle = Math.random() * Math.PI / 4 - Math.PI / 8; // -22.5 to 22.5 degrees
+            let direction = Math.random() > 0.5 ? 1 : -1;
+            ball.dx = direction * ball.speed * Math.cos(angle);
+            ball.dy = ball.speed * Math.sin(angle);
+        }
+
+        // Collision Detection
+        function collision(ball, paddle) {
+            return ball.x - ball.radius < paddle.x + paddle.width &&
+                   ball.x + ball.radius > paddle.x &&
+                   ball.y - ball.radius < paddle.y + paddle.height &&
+                   ball.y + ball.radius > paddle.y;
+        }
+
+        // Update Game Objects
+        function update() {
+            // Move player paddle
+            if (keys['ArrowUp'] && playerPaddle.y > 0) {
+                playerPaddle.y -= playerPaddle.dy;
+            }
+            if (keys['ArrowDown'] && (playerPaddle.y + playerPaddle.height) < canvas.height) {
+                playerPaddle.y += playerPaddle.dy;
+            }
+
+            // Move AI paddle
+            // Simple AI: Move towards the ball with some delay
+            if (aiPaddle.y + aiPaddle.height / 2 < ball.y - 35) {
+                aiPaddle.y += aiPaddle.dy;
+            } else if (aiPaddle.y + aiPaddle.height / 2 > ball.y + 35) {
+                aiPaddle.y -= aiPaddle.dy;
+            }
+
+            // Prevent AI paddle from going out of bounds
+            if (aiPaddle.y < 0) aiPaddle.y = 0;
+            if (aiPaddle.y + aiPaddle.height > canvas.height) aiPaddle.y = canvas.height - aiPaddle.height;
+
+            // Move ball
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Collision with top and bottom walls
+            if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.dy *= -1;
+                playSound(300, 'sine', 0.1);
+            }
+
+            // Collision with player paddle
+            if (collision(ball, playerPaddle)) {
+                // Calculate collision point
+                let collidePoint = (ball.y - (playerPaddle.y + playerPaddle.height / 2)) / (playerPaddle.height / 2);
+                // Calculate angle in radians (max 45 degrees)
+                let angleRad = collidePoint * (Math.PI / 4);
+                // Determine direction
+                let direction = 1;
+                // Update velocity
+                ball.dx = direction * ball.speed * Math.cos(angleRad);
+                ball.dy = ball.speed * Math.sin(angleRad);
+                // Increase speed
+                ball.speed += 0.5;
+                playSound(500, 'sine', 0.05);
+            }
+
+            // Collision with AI paddle
+            if (collision(ball, aiPaddle)) {
+                // Calculate collision point
+                let collidePoint = (ball.y - (aiPaddle.y + aiPaddle.height / 2)) / (aiPaddle.height / 2);
+                // Calculate angle in radians (max 45 degrees)
+                let angleRad = collidePoint * (Math.PI / 4);
+                // Determine direction
+                let direction = -1;
+                // Update velocity
+                ball.dx = direction * ball.speed * Math.cos(angleRad);
+                ball.dy = ball.speed * Math.sin(angleRad);
+                // Increase speed
+                ball.speed += 0.5;
+                playSound(500, 'sine', 0.05);
+            }
+
+            // Score updating
+            if (ball.x - ball.radius < 0) {
+                aiScore += 1;
+                playSound(200, 'sawtooth', 0.3);
+                resetBall();
+            } else if (ball.x + ball.radius > canvas.width) {
+                playerScore += 1;
+                playSound(200, 'sawtooth', 0.3);
+                resetBall();
+            }
+
+            // Check for game over (first to 10 points)
+            if (playerScore >= 10 || aiScore >= 10) {
+                setTimeout(() => {
+                    alert(`${playerScore >= 10 ? 'Player' : 'AI'} wins!`);
+                    playerScore = 0;
+                    aiScore = 0;
+                    resetBall();
+                }, 100);
+            }
+        }
+
+        // Draw Game Objects
+        function draw() {
+            // Clear canvas
+            drawRect(0, 0, canvas.width, canvas.height, '#000');
+
+            // Draw net
+            drawNet();
+
+            // Draw paddles and ball
+            drawRect(playerPaddle.x, playerPaddle.y, playerPaddle.width, playerPaddle.height, '#FFF');
+            drawRect(aiPaddle.x, aiPaddle.y, aiPaddle.width, aiPaddle.height, '#FFF');
+            drawCircle(ball.x, ball.y, ball.radius, '#FFF');
+
+            // Draw score
+            drawScore();
+        }
+
+        // Game Loop
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game
+        resetBall();
+        gameLoop();
+    </script>
+</body>
+</html>
