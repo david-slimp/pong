@@ -8,6 +8,10 @@
 - Improved code organization
 - Better variable naming conventions
 
+### Known Issues
+- There is a bug that set ball direction to be straight across the very top or bottom of the canvas if the ball hits the paddle at the very top or bottom of the play area.
+
+
 ## [0.0.2] - 2025-06-02
 ### Added
 - Sound effects using Web Audio API
@@ -28,7 +32,7 @@
 - Better ball speed management
 - More consistent AI behavior
 
-## [0.0.1] - 2025-01-01
+## [0.0.1] - 2025-06-01
 ### Initial Release
 
 ### Added
@@ -50,4 +54,3 @@
 - No win condition
 - Limited visual feedback
 - Basic styling
-

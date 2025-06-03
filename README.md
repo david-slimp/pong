@@ -1,39 +1,46 @@
-# Pong Game
+# rock808 Pong Game
 
-A modern implementation of the classic Pong game using HTML5 Canvas and JavaScript.
+A modern implementation of the classic Pong game using HTML5 Canvas and JavaScript, featuring multiple AI implementations and comprehensive documentation.
 
-## Features
-- Multiple versions with different AI implementations (GPT-4o, o1mini, SWE1)
-- Classic Pong gameplay with smooth controls
-- Score tracking for both players
-- AI opponents with varying difficulty
-- Responsive design that works on different screen sizes
-- Sound effects for ball hits and scores
-- Clean, well-documented codebase
+## ✨ Features
+- 🎮 Classic Pong gameplay with smooth, responsive controls
+- 🤖 Multiple AI opponents with varying difficulty levels
+- 🎯 Score tracking with win condition (first to 10 points)
+- 🔊 Sound effects for paddle hits and scoring
+- 🎨 Clean, responsive design that works on different screen sizes
+- 📝 Well-documented codebase with JSDoc comments
+- 🚀 Multiple versions showcasing different implementations
 
-## Available Versions
+## 🎮 Available Versions
 
 ### pong-v003-swe1.html (Latest)
-- **AI Type**: Enhanced documentation and code organization
+- **Version**: 0.0.3 (WindsurfSWE1)
+- **Focus**: Code quality and documentation
 - **Features**:
-  - Comprehensive code comments
-  - Improved code structure
-  - Better variable naming
-  - JSDoc style function documentation
+  - Comprehensive code comments and documentation
+  - Improved code structure and organization
+  - Better variable and function naming
+  - JSDoc style documentation
+  - All features from previous versions
 
 ### pong-v002-o1mini.html
-- **AI Type**: Improved AI with better ball prediction
+- **Version**: 0.0.2 (o1mini)
+- **Focus**: Enhanced gameplay
 - **Features**:
-  - Enhanced ball-speed difficulty
-  - Added sound effects
+  - Improved AI with better ball prediction
+  - Enhanced ball physics and speed mechanics
+  - Sound effects for game events
   - Visual feedback on paddle hits
+  - All features from v0.0.1
 
 ### pong-v001-gpt4o.html (Original)
-- **AI Type**: Basic AI
+- **Version**: 0.0.1 (GPT-4o)
+- **Focus**: Core gameplay
 - **Features**:
-  - Initial implementation
-  - Basic game mechanics
+  - Basic Pong mechanics
+  - Player vs AI gameplay
   - Score tracking
+  - Keyboard controls
 
 ## How to Play
 1. Open any version (e.g., `pong-v003-swe1.html`) in a modern web browser

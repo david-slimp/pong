@@ -1,4 +1,6 @@
-# Pong Game Development Roadmap for version 0.1.0 (MVP)
+# rock808 Pong Game Development Roadmap for version 0.1.0 (MVP)
+
+*Last updated: 2025-06-03*
 
 ## Phase 1: Project Setup & Documentation (High Priority)
 - [x] **Complete Core Documentation**
@@ -26,51 +28,52 @@
   - [x] Implement basic AI for single-player mode
 
 ## Phase 3: Polish & Features (Medium Priority)
-- [ ] **Game Features**
+- [x] **Game Features**
+  - [x] Add sound effects
+  - [x] Add visual feedback for scoring
   - [ ] Add start/game over screens
   - [ ] Implement game states (menu, playing, paused, game over)
-  - [ ] Add sound effects
-  - [ ] Add visual feedback for scoring
   - [ ] Implement game difficulty levels
 
-- [ ] **UI/UX Improvements**
-  - [ ] Add score display
-  - [ ] Add touch controls for mobile devices
-  - [ ] Implement pause functionality
-  - [ ] Add game instructions
-  - [ ] Improve visual design
+- [x] **UI/UX Improvements**
+  - [x] Add score display
+- [ ] Improve visual design
 
 ## Phase 4: Testing & Optimization (Medium Priority)
-- [ ] **Testing**
+- [x] **Testing**
   - [ ] Unit tests for game logic
-  - [ ] Cross-browser testing
+  - [x] Cross-browser testing
   - [ ] Mobile responsiveness testing
 
-- [ ] **Optimization**
-  - [ ] Performance optimization
-  - [ ] Code cleanup and refactoring
-  - [ ] Asset optimization
+- [x] **Optimization**
+  - [x] Performance optimization
+  - [x] Code cleanup and refactoring
+  - [x] Asset optimization
 
 ## Phase 5: Finalization & Release (Low Priority)
-- [ ] **Documentation**
-  - [ ] Finalize all documentation
-  - [ ] Add comments to code
-  - [ ] Create deployment instructions
+- [x] **Documentation**
+  - [x] Finalize all documentation
+  - [x] Add comments to code
+  - [x] Create deployment instructions
 
-- [ ] **Release**
-  - [ ] Version tagging
+- [x] **Release**
+  - [x] Version tagging (v0.0.3)
   - [ ] Create release notes
   - [ ] Deploy to hosting platform
 
-## Phase 6: Future Enhancements (Backlog)
+
+## Phase 6: Future Enhancements (Beyond MVP)
 - [ ] Multiplayer support
 - [ ] Power-ups
 - [ ] Different game modes
 - [ ] High score system
 - [ ] Player customization options
 - [ ] Add pause functionality with 'P' key (to be implemented)
+- [ ] Mute/unmute sound
 - [ ] Target frame rate: 60 FPS (standard for smooth gameplay)
 - [ ] Browser compatibility: Modern browsers (Chrome, Firefox, Safari, Edge)
+- [ ] Add touch controls for mobile devices
+- [ ] Add game instructions
 
 - [ ] **Project Structure**
   - [ ] Organize code into proper directories
@@ -82,8 +85,3 @@
   - [ ] Move game logic to separate JavaScript files
   - [ ] Create build process (if needed)
   - [ ] Consider adding CONTRIBUTING.md with contribution guidelines
-
-
-
----
-*Last updated: 2025-06-02*
