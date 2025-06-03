@@ -1,10 +1,19 @@
-<!-- Pong Game v0.0.2 (O1 Mini) -->
+<!-- 
+    Pong Game v0.0.3 (SWE1)
+    A modern implementation of the classic Pong game using HTML5 Canvas and JavaScript.
+    Features:
+    - Player vs AI gameplay
+    - Score tracking
+    - Sound effects
+    - Responsive design
+    - Smooth animations using requestAnimationFrame
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rock808 Pong Game</title>
+    <title>Pong Game v0.0.3 (SWE1)</title>
     <style>
         body {
             display: flex;
@@ -29,8 +38,15 @@
         const context = canvas.getContext('2d');
 
         // Sound Effects using Web Audio API
+        // Creates an audio context with cross-browser support
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+        /**
+         * Plays a sound effect using the Web Audio API
+         * @param {number} frequency - The frequency of the sound in Hz
+         * @param {string} type - The type of oscillator (sine, square, sawtooth, triangle)
+         * @param {number} duration - Duration of the sound in seconds
+         */
         function playSound(frequency, type, duration) {
             const oscillator = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
@@ -44,9 +60,9 @@
             oscillator.stop(audioCtx.currentTime + duration);
         }
 
-        // Score
-        let playerScore = 0;
-        let aiScore = 0;
+        // Game state
+        let playerScore = 0;  // Tracks player's score
+        let aiScore = 0;      // Tracks AI's score
 
         // Controls
         const keys = {
@@ -66,30 +82,36 @@
             }
         });
 
-        // Paddles and Ball
-        const paddleWidth = 10;
-        const paddleHeight = 100;
+        // Game objects configuration
+        const paddleWidth = 10;     // Width of both paddles
+        const paddleHeight = 100;   // Height of both paddles
+        
+        // Player paddle properties
         const playerPaddle = { 
-            x: 30, 
-            y: canvas.height / 2 - paddleHeight / 2, 
+            x: 30,  // X position (fixed)
+            y: canvas.height / 2 - paddleHeight / 2,  // Centered vertically
             width: paddleWidth, 
             height: paddleHeight, 
-            dy: 7 
+            dy: 7  // Vertical movement speed
         };
+        
+        // AI paddle properties
         const aiPaddle = { 
-            x: canvas.width - 30 - paddleWidth, 
-            y: canvas.height / 2 - paddleHeight / 2, 
+            x: canvas.width - 30 - paddleWidth,  // Positioned on the right
+            y: canvas.height / 2 - paddleHeight / 2,  // Centered vertically
             width: paddleWidth, 
             height: paddleHeight, 
-            dy: 5 
+            dy: 5  // Slightly slower than player for fairness
         };
+        
+        // Ball properties
         const ball = { 
-            x: canvas.width / 2, 
-            y: canvas.height / 2, 
-            radius: 10, 
-            speed: 5, 
-            dx: 5, 
-            dy: 5 
+            x: canvas.width / 2,   // Start in center
+            y: canvas.height / 2,  // Start in center
+            radius: 10,           // Size of the ball
+            speed: 5,             // Initial speed
+            dx: 5,                // Horizontal velocity
+            dy: 5                 // Vertical velocity
         };
 
         // Draw Rect (Paddles and Borders)
@@ -146,7 +168,15 @@
                    ball.y + ball.radius > paddle.y;
         }
 
-        // Update Game Objects
+        /**
+         * Updates all game objects' positions and checks for collisions
+         * Handles:
+         * - Player paddle movement
+         * - AI paddle movement
+         * - Ball movement and collisions
+         * - Score updates
+         * - Win condition
+         */
         function update() {
             // Move player paddle
             if (keys['ArrowUp'] && playerPaddle.y > 0) {
@@ -249,11 +279,15 @@
             drawScore();
         }
 
-        // Game Loop
+        /**
+         * Main game loop
+         * Updates game state and re-renders the game at monitor's refresh rate
+         * Uses requestAnimationFrame for smooth animation
+         */
         function gameLoop() {
-            update();
-            draw();
-            requestAnimationFrame(gameLoop);
+            update();      // Update game state
+            draw();        // Render the game
+            requestAnimationFrame(gameLoop);  // Schedule next frame
         }
 
         // Start the game

@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.3] - 2025-06-03
+### Added
+- Comprehensive code documentation
+- JSDoc style function comments
+- Detailed inline comments for game logic
+- Improved code organization
+- Better variable naming conventions
+
 ## [0.0.2] - 2025-06-02
 ### Added
 - Sound effects using Web Audio API
