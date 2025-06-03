@@ -13,7 +13,16 @@ A modern implementation of the classic Pong game using HTML5 Canvas and JavaScri
 
 ## 🎮 Available Versions
 
-### pong-v003-swe1.html (Latest)
+### pong-v004-swe1.html (Latest)
+- **Version**: 0.0.4 (WindsurfSWE1)
+- **Focus**: Bug fixes and gameplay improvements
+- **Changes**:
+  - Fixed ball getting stuck on top/bottom edges
+  - Improved wall collision detection
+  - Added position correction for more reliable bounces
+  - Enhanced ball physics for better gameplay
+
+### pong-v003-swe1.html
 - **Version**: 0.0.3 (WindsurfSWE1)
 - **Focus**: Code quality and documentation
 - **Features**:

@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.0.4] - 2025-06-03
+### Fixed
+- Fixed issue [#2](https://github.com/david-slimp/pong/issues/2) where ball could get stuck moving horizontally along the top or bottom edges after hitting the paddle at extreme ends
+- Improved wall collision detection to prevent ball from getting stuck
+- Added position correction and dampening for more reliable bounces
+
+### Changed
+- Updated wall collision handling to be more robust
+- Improved ball physics for more consistent gameplay
+
+
 ## [0.0.3] - 2025-06-03
 ### Added
 - Comprehensive code documentation
@@ -31,6 +42,7 @@
 - Improved collision detection
 - Better ball speed management
 - More consistent AI behavior
+
 
 ## [0.0.1] - 2025-06-01
 ### Initial Release
