@@ -1,6 +1,6 @@
 # rock808 Pong Game - Minimum Viable Product (MVP)
 
-## Current Implementation Status (v0.0.3)
+## Current Implementation Status (v0.0.4)
 
 ### Core Gameplay
 - [x] Basic Pong mechanics (paddles, ball, scoring)
@@ -27,8 +27,8 @@
 - [x] Cross-browser compatibility
 
 ## Known Issues
-- Ball direction can become nearly horizontal when hitting paddle edges
 - No start/pause menu
+- Ball direction can still become nearly horizontal when hitting paddle edges (improved but still present)
 - Limited mobile support (keyboard controls only)
 - No game states (menu, paused, etc.)
 - Basic visual design

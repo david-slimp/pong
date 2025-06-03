@@ -57,8 +57,14 @@
   - [x] Create deployment instructions
 
 - [x] **Release**
-  - [x] Version tagging (v0.0.3)
-  - [ ] Create release notes
+  - [x] Version tagging (v0.0.4)
+  - [x] Create release notes
+
+## Bug Fixes
+- [x] Fixed ball sticking to top/bottom edges (v0.0.4)
+  - [x] Improved wall collision detection
+  - [x] Added position correction
+  - [x] Added dampening for more reliable bounces
   - [ ] Deploy to hosting platform
 
 
