@@ -12,7 +12,6 @@
   - [x] Game has a win condition at 10 points (already implemented)
   - [x] No need for different difficulty levels at this time
 
-
 ## Phase 2: Core Game Development (High Priority)
 - [x] **Basic Game Structure**
   - [x] Set up HTML5 Canvas
@@ -31,24 +30,14 @@
 - [x] **Game Features**
   - [x] Add sound effects
   - [x] Add visual feedback for scoring
-  - [ ] Add start/game over screens
-  - [ ] Implement game states (menu, playing, paused, game over)
-  - [ ] Implement game difficulty levels
 
 - [x] **UI/UX Improvements**
   - [x] Add score display
-- [ ] Improve visual design
 
 ## Phase 4: Testing & Optimization (Medium Priority)
 - [x] **Testing**
-  - [ ] Unit tests for game logic
-  - [x] Cross-browser testing
-  - [ ] Mobile responsiveness testing
+  - [x] Testing on Chrome broswer
 
-- [x] **Optimization**
-  - [x] Performance optimization
-  - [x] Code cleanup and refactoring
-  - [x] Asset optimization
 
 ## Phase 5: Finalization & Release (Low Priority)
 - [x] **Documentation**
@@ -57,15 +46,15 @@
   - [x] Create deployment instructions
 
 - [x] **Release**
-  - [x] Version tagging (v0.0.4)
+  - [x] Version tagging
   - [x] Create release notes
+  - [x] Deploy to hosting platform https://rock808.com/games/pong
 
 ## Bug Fixes
 - [x] Fixed ball sticking to top/bottom edges (v0.0.4)
   - [x] Improved wall collision detection
   - [x] Added position correction
   - [x] Added dampening for more reliable bounces
-  - [ ] Deploy to hosting platform
 
 
 ## Phase 6: Future Enhancements (Beyond MVP)
@@ -80,6 +69,17 @@
 - [ ] Browser compatibility: Modern browsers (Chrome, Firefox, Safari, Edge)
 - [ ] Add touch controls for mobile devices
 - [ ] Add game instructions
+- [ ] Add start/game over screens
+- [ ] Implement game states (menu, playing, paused, game over)
+- [ ] Implement game difficulty levels
+- [ ] Improve visual design
+- [ ] Unit tests for game logic
+- [ ] Cross-browser testing
+- [ ] Mobile responsiveness testing
+- [ ] **Optimization**
+  - [ ] Performance optimization
+  - [ ] Code cleanup and refactoring
+  - [ ] Asset optimization
 
 - [ ] **Project Structure**
   - [ ] Organize code into proper directories

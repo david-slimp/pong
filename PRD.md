@@ -1,7 +1,7 @@
 # rock808 Pong Game - Product Requirements Document
 
 ## 1. Overview
-A modern web-based implementation of the classic Pong game, built with HTML5 Canvas and vanilla JavaScript. This project showcases multiple AI implementations and serves as a learning resource for game development.
+A modern web-based implementation of the classic pong game, built with HTML5 Canvas and vanilla JavaScript. This project showcases multiple AI vibe-coding implementations and serves as a learning resource for game development.
 
 ## 2. Target Audience
 - Casual gamers looking for a quick, nostalgic gaming experience
@@ -10,11 +10,11 @@ A modern web-based implementation of the classic Pong game, built with HTML5 Can
 - Open source contributors looking to improve an accessible project
 
 ## 3. Core Features
-### Implemented (v0.0.3)
-- Single-player mode against AI with multiple difficulty levels
+### Implemented (v0.0.4)
+- Single-player mode against simple AI opponent
 - Score tracking with win condition (first to 10 points)
 - Responsive game canvas that adapts to different screen sizes
-- Sound effects for paddle hits and scoring
+- Sound effects for paddle / wall hits and scoring
 - Enhanced AI with improved ball prediction
 - Keyboard controls (Up/Down arrows)
 - Visual feedback for scoring events
@@ -42,7 +42,7 @@ A modern web-based implementation of the classic Pong game, built with HTML5 Can
 ### Browser Support
 - **Fully Supported**: Latest versions of Chrome, Firefox, Safari, and Edge
 - **Basic Support**: Mobile browsers (keyboard controls only)
-- **Not Supported**: Internet Explorer
+- **Not Supported**: Internet Exploder
 
 ## 5. Performance Targets
 - **Frame Rate**: Consistent 60 FPS on modern desktop browsers

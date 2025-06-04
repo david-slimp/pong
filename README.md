@@ -1,20 +1,24 @@
 # rock808 Pong Game
 
-A modern implementation of the classic Pong game using HTML5 Canvas and JavaScript, featuring multiple AI implementations and comprehensive documentation.
+A modern implementation of the classic pong game using HTML5 Canvas and JavaScript, featuring multiple AI vibe-coding implementations and comprehensive documentation.
+
+Play online: https://rock808.com/games/pong
+
+Source: https://github.com/david-slimp/pong
 
 ## ✨ Features
-- 🎮 Classic Pong gameplay with smooth, responsive controls
-- 🤖 Multiple AI opponents with varying difficulty levels
+- 🎮 Classic pong gameplay with smooth, responsive controls
+- 🤖 Simple AI opponent with ball prediction
 - 🎯 Score tracking with win condition (first to 10 points)
-- 🔊 Sound effects for paddle hits and scoring
+- 🔊 Sound effects for paddle / wall hits and scoring
 - 🎨 Clean, responsive design that works on different screen sizes
 - 📝 Well-documented codebase with JSDoc comments
-- 🚀 Multiple versions showcasing different implementations
+- 🚀 Multiple versions showcasing different AI model implementations
 
 ## 🎮 Available Versions
 
 ### pong-v004-swe1.html (Latest)
-- **Version**: 0.0.4 (WindsurfSWE1)
+- **Version**: 0.0.4 (Windsurf-SWE1)
 - **Focus**: Bug fixes and gameplay improvements
 - **Changes**:
   - Fixed ball getting stuck on top/bottom edges
@@ -23,7 +27,7 @@ A modern implementation of the classic Pong game using HTML5 Canvas and JavaScri
   - Enhanced ball physics for better gameplay
 
 ### pong-v003-swe1.html
-- **Version**: 0.0.3 (WindsurfSWE1)
+- **Version**: 0.0.3 (Windsurf-SWE1)
 - **Focus**: Code quality and documentation
 - **Features**:
   - Comprehensive code comments and documentation
@@ -33,17 +37,17 @@ A modern implementation of the classic Pong game using HTML5 Canvas and JavaScri
   - All features from previous versions
 
 ### pong-v002-o1mini.html
-- **Version**: 0.0.2 (o1mini)
+- **Version**: 0.0.2 (OpenAI o1-mini)
 - **Focus**: Enhanced gameplay
 - **Features**:
   - Improved AI with better ball prediction
   - Enhanced ball physics and speed mechanics
   - Sound effects for game events
-  - Visual feedback on paddle hits
+  - Visual feedback on paddle / wall hits
   - All features from v0.0.1
 
 ### pong-v001-gpt4o.html (Original)
-- **Version**: 0.0.1 (GPT-4o)
+- **Version**: 0.0.1 (OpenAi GPT-4o)
 - **Focus**: Core gameplay
 - **Features**:
   - Basic Pong mechanics
@@ -52,7 +56,7 @@ A modern implementation of the classic Pong game using HTML5 Canvas and JavaScri
   - Keyboard controls
 
 ## How to Play
-1. Open any version (e.g., `pong-v003-swe1.html`) in a modern web browser
+1. Open any version (e.g., `pong-v004-swe1.html`) in a modern web browser
 2. Use the **Up** and **Down** arrow keys to control your paddle
 3. Hit the ball with different areas of your paddle to control the angle of the ball
 4. First to score 10 points wins the game!
